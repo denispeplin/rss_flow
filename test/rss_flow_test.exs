@@ -1,6 +1,7 @@
 defmodule RssFlowTest do
   use ExUnit.Case, async: true
   doctest RssFlow
+  import ExUnit.TestHelpers, only: [read_rss: 1]
 
   def xml_data do
     {:rss, %{version: "2.0"},
@@ -60,6 +61,11 @@ defmodule RssFlowTest do
   end
 
   describe "parse/1" do
+    test "transforms data from XML string to internal format" do
+      xml_string = read_rss("jobs_feed")
+      assert RssFlow.parse(xml_string) == rss_data
+    end
+
     test "transforms data from XmlParser format to internal format" do
       assert RssFlow.parse(xml_data) == rss_data
     end

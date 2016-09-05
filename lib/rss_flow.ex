@@ -8,7 +8,10 @@ defmodule RssFlow do
   @doc """
   Transform XmlParser format to RSS-specific format
   """
-  def parse(data) do
+  def parse(data) when is_binary(data) do
+    data |> XmlParser.parse |> parse
+  end
+  def parse(data) when is_tuple(data) do
     do_parse data
   end
 
