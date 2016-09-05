@@ -61,13 +61,13 @@ defmodule RssFlowTest do
   end
 
   describe "parse/1" do
+    test "transforms data from XmlParser format to internal format" do
+      assert RssFlow.parse(xml_data) == rss_data
+    end
+
     test "transforms data from XML string to internal format" do
       xml_string = read_rss("jobs_feed")
       assert RssFlow.parse(xml_string) == rss_data
-    end
-
-    test "transforms data from XmlParser format to internal format" do
-      assert RssFlow.parse(xml_data) == rss_data
     end
   end
 
@@ -78,6 +78,12 @@ defmodule RssFlowTest do
 
     test "filters feed by description" do
       assert RssFlow.filter(rss_data, "onsite") == rss_data([rss_item_elixir])
+    end
+
+    test "filters raw XML and outputs raw XML" do
+      resulting_data = read_rss("jobs_feed")
+      |> RssFlow.filter("Ruby")
+      assert resulting_data == RssFlow.parse(read_rss("jobs_feed_ruby"))
     end
   end
 

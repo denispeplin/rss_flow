@@ -1,0 +1,12 @@
+<rss version="2.0">
+  <channel>
+    <title>Awesome Job</title>
+    <description>Most awesome jobs in the world!</description>
+    <link>http://example.com</link>
+    <item>
+      <title>Ruby developer</title>
+      <description>Remote position. Mostly backend stuff.</description>
+      <guid isPermaLink="true">http://example.com/jobs/1</guid>
+    </item>
+  </channel>
+</rss>

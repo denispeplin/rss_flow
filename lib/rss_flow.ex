@@ -48,6 +48,9 @@ defmodule RssFlow do
   @doc """
   Filter RSS items.
   """
+  def filter(data, pattern) when is_binary(data) do
+    data |> parse |> filter(pattern)
+  end
   def filter(data, pattern) when is_map(data) do
     %{
       rss: data[:rss],
