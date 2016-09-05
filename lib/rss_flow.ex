@@ -45,7 +45,25 @@ defmodule RssFlow do
   @doc """
   Filter RSS items.
   """
-  def filter do
+  def filter(data, pattern) when is_map(data) do
+    %{
+      rss: data[:rss],
+      channel: data[:channel],
+      items: filter_items(data[:items], pattern)
+    }
+  end
+  defp filter_items([item | tail], pattern) do
+    if(contains_i?(item[:title], pattern) || contains_i?(item[:description], pattern)) do
+      [item | filter_items(tail, pattern)]
+    else
+      filter_items(tail, pattern)
+    end
+  end
+  defp filter_items([], _), do: []
+  defp contains_i?(string, pattern) do
+    string
+    |> String.downcase
+    |> String.contains?(String.downcase(pattern))
   end
 
   @doc """
