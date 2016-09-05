@@ -49,17 +49,9 @@ defmodule RssFlow do
     %{
       rss: data[:rss],
       channel: data[:channel],
-      items: filter_items(data[:items], pattern)
+      items: Enum.filter(data[:items], fn(item) -> contains_i?(item[:title] <> item[:description], pattern) end)
     }
   end
-  defp filter_items([item | tail], pattern) do
-    if(contains_i?(item[:title], pattern) || contains_i?(item[:description], pattern)) do
-      [item | filter_items(tail, pattern)]
-    else
-      filter_items(tail, pattern)
-    end
-  end
-  defp filter_items([], _), do: []
   defp contains_i?(string, pattern) do
     string
     |> String.downcase
