@@ -60,7 +60,7 @@ defmodule RssFlowTest do
   end
 
   describe "parse/1" do
-    test "transforms data to internal format" do
+    test "transforms data from XmlParser format to internal format" do
       assert RssFlow.parse(xml_data) == rss_data
     end
   end
@@ -72,6 +72,22 @@ defmodule RssFlowTest do
 
     test "filters feed by description" do
       assert RssFlow.filter(rss_data, "onsite") == rss_data([rss_item_elixir])
+    end
+  end
+
+  describe "generate/2" do
+    test "transforms data from internal format to XmlBuilder format" do
+      # Normal thing to do is to compare
+      # `assert RssFlow.generate(rss_data) == xml_data` and that's it.
+      # But the order of elements (arrays inside tuples) is different,
+      # and the results do not match, so the only way for now is to compare
+      # the full chain (like in integration tests).
+      parsed_rss_data = rss_data
+      |> RssFlow.generate
+      |> XmlBuilder.generate
+      |> XmlParser.parse
+      |> RssFlow.parse
+      assert parsed_rss_data == rss_data
     end
   end
 end

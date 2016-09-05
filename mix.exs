@@ -14,7 +14,7 @@ defmodule RssFlow.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :xml_parser, :xml_builder]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +27,9 @@ defmodule RssFlow.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      {:xml_parser, "~> 0.1.0", path: "../xml_parser"},
+      {:xml_builder, "~> 0.0.8"}
+    ]
   end
 end

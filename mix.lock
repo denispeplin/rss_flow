@@ -1,0 +1,2 @@
+%{"quinn": {:hex, :quinn, "1.0.0", "a4ca79e7b522a40bb1524bd271634db97339017346e6550b144b2bd6381225ea", [:mix], []},
+  "xml_builder": {:hex, :xml_builder, "0.0.8", "dea10735e15c91e24582e41ee2d3282b7f0177a5b42d6268096a6221ba83226f", [:mix], []}}

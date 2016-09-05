@@ -61,6 +61,23 @@ defmodule RssFlow do
   @doc """
   Transforms RSS-specific format to XmlBuilder format
   """
-  def generate do
+  def generate(data) do
+    {:rss, data[:rss], [{:channel, nil, generate_channel(data[:channel]) ++ generate_items(data[:items])}]}
+  end
+  defp generate_channel(channel) do
+    generate_elements(channel)
+  end
+  defp generate_items(items) do
+    Enum.map items, fn(item) -> {:item, nil, generate_elements(item)} end
+  end
+  defp generate_elements(data) do
+    Enum.map data, fn({name, sub_value}) ->
+      {value, attributes} = generate_value(sub_value)
+      {name, attributes, value}
+    end
+  end
+  defp generate_value(value) when is_binary(value), do: {value, nil}
+  defp generate_value(value) when is_map(value) do
+    Map.pop value, :value
   end
 end
