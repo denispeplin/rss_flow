@@ -83,7 +83,7 @@ defmodule RssFlowTest do
     test "filters raw XML and outputs raw XML" do
       resulting_data = read_rss("jobs_feed")
       |> RssFlow.filter("Ruby")
-      assert resulting_data == RssFlow.parse(read_rss("jobs_feed_ruby"))
+      assert RssFlow.parse(resulting_data) == RssFlow.parse(read_rss("jobs_feed_ruby"))
     end
   end
 

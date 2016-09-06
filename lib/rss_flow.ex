@@ -49,7 +49,7 @@ defmodule RssFlow do
   Filter RSS items.
   """
   def filter(data, pattern) when is_binary(data) do
-    data |> parse |> filter(pattern)
+    data |> parse |> filter(pattern) |> generate |> XmlBuilder.generate
   end
   def filter(data, pattern) when is_map(data) do
     %{
