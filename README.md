@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/denispeplin/rss_flow.svg?branch=master)](https://travis-ci.org/denispeplin/rss_flow)
+
 # RssFlow
 
 Rss handling library for `Elixir` language.
