@@ -5,4 +5,4 @@
   "ex_doc": {:hex, :ex_doc, "0.13.0", "aa2f8fe4c6136a2f7cfc0a7e06805f82530e91df00e2bff4b4362002b43ada65", [:mix], [{:earmark, "~> 1.0", [hex: :earmark, optional: false]}]},
   "quinn": {:hex, :quinn, "1.0.0", "a4ca79e7b522a40bb1524bd271634db97339017346e6550b144b2bd6381225ea", [:mix], []},
   "xml_builder": {:hex, :xml_builder, "0.0.8", "dea10735e15c91e24582e41ee2d3282b7f0177a5b42d6268096a6221ba83226f", [:mix], []},
-  "xml_parser": {:hex, :xml_parser, "0.1.0", "eccdda55ae528c21835dfc24a064c33aa4c72f6b49fee0435a7c2c48768eea9a", [:mix], [{:quinn, "~> 1.0.0", [hex: :quinn, optional: false]}]}}
+  "xml_parser": {:hex, :xml_parser, "0.1.1", "d7fb8e41f747f1ba9a8d160a5c915552ad55dee55dba3deeb6e7065bc5a1c068", [:mix], [{:quinn, "~> 1.0.0", [hex: :quinn, optional: false]}]}}
