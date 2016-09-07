@@ -2,19 +2,21 @@
 
 # RssFlow
 
-Rss handling library for `Elixir` language.
+`RSS` processing library for `Elixir` language.
 
 ## Features
 
-1. Parsing `XML` from `XmlParser` format into internal RSS-specific representation (Elixir Map).
+1. Parsing `XML` from [XmlParser](https://github.com/denispeplin/xml_parser)
+format into internal RSS-specific representation (Elixir Map).
 2. Parsing directly from `XML` into internal representation.
 2. Filtering internal RSS-specific representation on title and description.
-3. Outputting from internal representation into `XmlBuilder` format.
+3. Outputting from internal representation into
+[XmlBuilder](https://github.com/joshnuss/xml_builder) format.
 4. Filtering `XML` directly, without transforming into internal format.
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
+The package can be installed as:
 
   1. Add `rss_flow` to your list of dependencies in `mix.exs`:
 
@@ -31,6 +33,10 @@ If [available in Hex](https://hex.pm/docs/publish), the package can be installed
       [applications: [:rss_flow]]
     end
     ```
+
+## Documentation
+
+Documentation is available [here](https://hexdocs.pm/rss_flow).
 
 ## Gotchas
 

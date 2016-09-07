@@ -6,7 +6,7 @@ defmodule RssFlow do
   """
 
   @doc """
-  Transform XmlParser format to RSS-specific format
+  Transform XML string or XmlParser format to RSS-specific format (a map).
   """
   @spec parse(binary | {atom, map, list}) :: map
   def parse(data) when is_binary(data) do
@@ -47,7 +47,8 @@ defmodule RssFlow do
   end
 
   @doc """
-  Filter RSS items.
+  Filter RSS items. Filter can be applied to a map representing XML or directly
+  to an XML string.
   """
   @spec filter(map | binary, binary) :: map
   def filter(data, pattern) when is_binary(data) do
@@ -70,7 +71,7 @@ defmodule RssFlow do
   end
 
   @doc """
-  Transforms RSS-specific format to XmlBuilder format
+  Transform RSS-specific format to XmlBuilder format.
   """
   @spec generate(map) :: {atom, map, list}
   def generate(data) do

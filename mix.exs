@@ -7,6 +7,12 @@ defmodule RssFlow.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: [
+       maintainers: ["Denis Peplin"],
+       licenses: ["Apache 2.0"],
+       links: %{github: "https://github.com/denispeplin/rss_flow"}
+     ],
+     description: "RSS processing library for Elixir language.",
      deps: deps()]
   end
 
@@ -30,6 +36,7 @@ defmodule RssFlow.Mixfile do
     [
       {:xml_parser, "~> 0.1.0"},
       {:xml_builder, "~> 0.0.8"},
+      {:ex_doc, ">= 0.0.0", only: :dev},
       {:dialyxir, "~> 0.3.5", only: [:dev]},
       {:credo, "~> 0.4", only: [:dev, :test]}
     ]
