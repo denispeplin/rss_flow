@@ -8,6 +8,7 @@ defmodule RssFlow do
   @doc """
   Transform XmlParser format to RSS-specific format
   """
+  @spec parse(binary | {atom, map, list}) :: map
   def parse(data) when is_binary(data) do
     data |> XmlParser.parse |> parse
   end
@@ -16,7 +17,7 @@ defmodule RssFlow do
   end
 
   defp do_parse({:rss, attributes, content}) do
-    [channel, items] = do_parse(content)
+    [channel, items] = parse_channel(content)
 
     %{
       rss: attributes,
@@ -24,7 +25,7 @@ defmodule RssFlow do
       items: items
     }
   end
-  defp do_parse([{:channel, nil, content}]) do
+  defp parse_channel([{:channel, nil, content}]) do
     %{false: channel, true: items} = group_items(content)
     [Enum.into(parse_elements(channel), %{}), parse_elements(items)]
   end
@@ -48,6 +49,7 @@ defmodule RssFlow do
   @doc """
   Filter RSS items.
   """
+  @spec filter(map | binary, binary) :: map
   def filter(data, pattern) when is_binary(data) do
     data |> parse |> filter(pattern) |> generate |> XmlBuilder.generate
   end
@@ -70,6 +72,7 @@ defmodule RssFlow do
   @doc """
   Transforms RSS-specific format to XmlBuilder format
   """
+  @spec generate(map) :: {atom, map, list}
   def generate(data) do
     {
       :rss,

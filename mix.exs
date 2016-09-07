@@ -30,6 +30,7 @@ defmodule RssFlow.Mixfile do
     [
       {:xml_parser, "~> 0.1.0"},
       {:xml_builder, "~> 0.0.8"},
+      {:dialyxir, "~> 0.3.5", only: [:dev]},
       {:credo, "~> 0.4", only: [:dev, :test]}
     ]
   end
