@@ -28,7 +28,7 @@ defmodule RssFlow.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:xml_parser, "~> 0.1.0", path: "../xml_parser"},
+      {:xml_parser, "~> 0.1.0"},
       {:xml_builder, "~> 0.0.8"}
     ]
   end
