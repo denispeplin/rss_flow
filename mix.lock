@@ -1,3 +1,5 @@
-%{"quinn": {:hex, :quinn, "1.0.0", "a4ca79e7b522a40bb1524bd271634db97339017346e6550b144b2bd6381225ea", [:mix], []},
+%{"bunt": {:hex, :bunt, "0.1.6", "5d95a6882f73f3b9969fdfd1953798046664e6f77ec4e486e6fafc7caad97c6f", [:mix], []},
+  "credo": {:hex, :credo, "0.4.11", "03a64e9d53309b7132556284dda0be57ba1013885725124cfea7748d740c6170", [:mix], [{:bunt, "~> 0.1.6", [hex: :bunt, optional: false]}]},
+  "quinn": {:hex, :quinn, "1.0.0", "a4ca79e7b522a40bb1524bd271634db97339017346e6550b144b2bd6381225ea", [:mix], []},
   "xml_builder": {:hex, :xml_builder, "0.0.8", "dea10735e15c91e24582e41ee2d3282b7f0177a5b42d6268096a6221ba83226f", [:mix], []},
-  "xml_parser": {:hex, :xml_parser, "0.1.0", "7bad02d2e624d53a67e316a1bec1b8a44f4999bd4ac8f6c420361fe4e8f17d93", [:mix], [{:quinn, "~> 1.0.0", [hex: :quinn, optional: false]}]}}
+  "xml_parser": {:hex, :xml_parser, "0.1.0", "eccdda55ae528c21835dfc24a064c33aa4c72f6b49fee0435a7c2c48768eea9a", [:mix], [{:quinn, "~> 1.0.0", [hex: :quinn, optional: false]}]}}

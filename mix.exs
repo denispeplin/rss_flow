@@ -29,7 +29,8 @@ defmodule RssFlow.Mixfile do
   defp deps do
     [
       {:xml_parser, "~> 0.1.0"},
-      {:xml_builder, "~> 0.0.8"}
+      {:xml_builder, "~> 0.0.8"},
+      {:credo, "~> 0.4", only: [:dev, :test]}
     ]
   end
 end

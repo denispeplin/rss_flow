@@ -37,7 +37,7 @@ defmodule RssFlow do
     [parse_elements(head) | parse_elements(tail)]
   end
   defp parse_elements({:item, nil, item}) do
-    parse_elements(item) |> Enum.into(%{})
+    item |> parse_elements |> Enum.into(%{})
   end
   defp parse_elements([]), do: []
   defp parse_elements({name, nil, value}), do: {name, value}
@@ -55,7 +55,10 @@ defmodule RssFlow do
     %{
       rss: data[:rss],
       channel: data[:channel],
-      items: Enum.filter(data[:items], fn(item) -> contains_i?(item[:title] <> item[:description], pattern) end)
+      items: Enum.filter(
+        data[:items],
+        fn(item) -> contains_i?(item[:title] <> item[:description], pattern) end
+      )
     }
   end
   defp contains_i?(string, pattern) do
@@ -68,7 +71,11 @@ defmodule RssFlow do
   Transforms RSS-specific format to XmlBuilder format
   """
   def generate(data) do
-    {:rss, data[:rss], [{:channel, nil, generate_channel(data[:channel]) ++ generate_items(data[:items])}]}
+    {
+      :rss,
+      data[:rss],
+      [{:channel, nil, generate_channel(data[:channel]) ++ generate_items(data[:items])}]
+    }
   end
   defp generate_channel(channel) do
     generate_elements(channel)
