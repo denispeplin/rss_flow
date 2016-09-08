@@ -106,7 +106,7 @@ defmodule RssFlowTest do
       # the full chain (like in integration tests).
       parsed_rss_data = rss_data
       |> RssFlow.generate
-      |> XmlBuilder.generate
+      |> XmlBuilder.doc
       |> XmlParser.parse
       |> RssFlow.parse
       assert parsed_rss_data == rss_data

@@ -55,7 +55,7 @@ defmodule RssFlow do
   """
   @spec filter(map | binary, binary) :: map
   def filter(data, pattern) when is_binary(data) do
-    data |> parse |> filter(pattern) |> generate |> XmlBuilder.generate
+    data |> parse |> filter(pattern) |> generate |> XmlBuilder.doc
   end
   def filter(data, pattern) when is_map(data) do
     %{
