@@ -81,23 +81,26 @@ defmodule RssFlow do
     {
       :rss,
       data[:rss],
-      [{:channel, nil, generate_channel(data[:channel]) ++ generate_items(data[:items])}]
+      [{:channel, nil, generate_elements(data[:channel]) ++ generate_items(data[:items])}]
     }
   end
-  defp generate_channel(channel) do
-    generate_elements(channel)
+
+  defp generate_elements(elements) do
+    elements
+    |> Enum.map(fn({name, raw_value}) -> generate_value(name, raw_value) end)
   end
+
+  defp generate_value(name, raw_value) when is_binary(raw_value), do: {name, nil, raw_value}
+  defp generate_value(name, %{value: _} = raw_value) do
+    {value, attributes} = Map.pop(raw_value, :value)
+    {name, attributes, value}
+  end
+  defp generate_value(name, raw_value) when is_map(raw_value) do
+    {name, nil, generate_elements(raw_value)}
+  end
+
   defp generate_items(items) do
-    Enum.map items, fn(item) -> {:item, nil, generate_elements(item)} end
-  end
-  defp generate_elements(data) do
-    Enum.map data, fn({name, sub_value}) ->
-      {value, attributes} = generate_value(sub_value)
-      {name, attributes, value}
-    end
-  end
-  defp generate_value(value) when is_binary(value), do: {value, nil}
-  defp generate_value(value) when is_map(value) do
-    Map.pop value, :value
+    items
+    |> Enum.map(fn(item) -> {:item, nil, generate_elements(item)} end)
   end
 end

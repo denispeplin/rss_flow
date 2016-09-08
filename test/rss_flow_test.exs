@@ -9,8 +9,8 @@ defmodule RssFlowTest do
        [{:title, nil, "Awesome Job"},
         {:description, nil, "Most awesome jobs in the world!"},
         {:link, nil, "http://example.com"},
-        {:image, nil, [
-          {:url, nil, "http://example.com/images/sample.png"},
+        {:image, nil,
+         [{:url, nil, "http://example.com/images/sample.png"},
           {:title, nil, "Image title (alt)."},
           {:link, nil, "http://example.com/from_image"}
         ]},
