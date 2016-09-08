@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/denispeplin/rss_flow.svg?branch=master)](https://travis-ci.org/denispeplin/rss_flow)
+[![Hex Version](https://img.shields.io/hexpm/v/rss_flow.svg)](https://hex.pm/packages/rss_flow)
 
 # RssFlow
 
