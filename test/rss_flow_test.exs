@@ -9,6 +9,11 @@ defmodule RssFlowTest do
        [{:title, nil, "Awesome Job"},
         {:description, nil, "Most awesome jobs in the world!"},
         {:link, nil, "http://example.com"},
+        {:image, nil, [
+          {:url, nil, "http://example.com/images/sample.png"},
+          {:title, nil, "Image title (alt)."},
+          {:link, nil, "http://example.com/from_image"}
+        ]},
         {:item, nil,
          [{:title, nil, "Ruby developer"},
           {:description, nil, "Remote position. Mostly backend stuff."},
@@ -25,7 +30,12 @@ defmodule RssFlowTest do
       channel: %{
         title: "Awesome Job",
         description: "Most awesome jobs in the world!",
-        link: "http://example.com"
+        link: "http://example.com",
+        image: %{
+          url: "http://example.com/images/sample.png",
+          title: "Image title (alt).",
+          link: "http://example.com/from_image"
+        }
       }
     }
   end

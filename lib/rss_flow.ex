@@ -40,6 +40,9 @@ defmodule RssFlow do
   defp parse_elements({:item, nil, item}) do
     item |> parse_elements |> Enum.into(%{})
   end
+  defp parse_elements({:image, nil, item}) do
+    {:image, item |> parse_elements |> Enum.into(%{})}
+  end
   defp parse_elements([]), do: []
   defp parse_elements({name, nil, value}), do: {name, value}
   defp parse_elements({name, attributes, value}) do
