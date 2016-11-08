@@ -77,11 +77,18 @@ defmodule RssFlow do
   Transform RSS-specific format to XmlBuilder format.
   """
   @spec generate(map) :: {atom, map, list}
-  def generate(data) do
+  def generate(%{rss: _} = data) do
     {
       :rss,
       data[:rss],
       [{:channel, nil, generate_elements(data[:channel]) ++ generate_items(data[:items])}]
+    }
+  end
+  def generate(%{"rss" => _} = data) do
+    {
+      :rss,
+      data["rss"],
+      [{:channel, nil, generate_elements(data["channel"]) ++ generate_items(data["items"])}]
     }
   end
 
@@ -93,6 +100,10 @@ defmodule RssFlow do
   defp generate_value(name, raw_value) when is_binary(raw_value), do: {name, nil, raw_value}
   defp generate_value(name, %{value: _} = raw_value) do
     {value, attributes} = Map.pop(raw_value, :value)
+    {name, attributes, value}
+  end
+  defp generate_value(name, %{"value" => _} = raw_value) do
+    {value, attributes} = Map.pop(raw_value, "value")
     {name, attributes, value}
   end
   defp generate_value(name, raw_value) when is_map(raw_value) do
